@@ -73,6 +73,10 @@ inputs:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
     default: ''
+  dry_run:
+    description: 'Mode of execution for the action, by default the API call will be sent. Set to dry_run: true if you only want to print the command (strips secrets before printing).'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -97,3 +101,4 @@ runs:
     - ${{ inputs.cromwell_token }}
     - ${{ inputs.repository_platform }}
     - ${{ inputs.cloudos_cli_flags}}
+    - ${{ inputs.dry_run}}

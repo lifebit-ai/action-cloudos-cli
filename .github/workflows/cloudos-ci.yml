@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Echo cloudos command
+      - name: Print cloudos job run command (dry_run set to true)
         uses: ./ # Uses an action in the root directory
         id: cloudos_job_run
         with:
@@ -18,3 +18,4 @@ jobs:
           workflow_name: 'cgpu/rnatoy'
           nextflow_profile: 'test'
           cloudos_cli_flags: '--resumable --spot'
+          dry_run: 'true'
