@@ -38,13 +38,16 @@ If set to `'true'` the action only prints the `cloudos job run` command instead 
 
 The Lifebit CloudOS user personal API token.
 
+> :warning: It is highly recommended to use Github Actions Secrets to define this secret variable. Follow the [official Github Actions documentation for reporsitory secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) to set this up for your reporsitory.
+
+
 ### `cloudos_url`
 
 The Lifebit CloudOS application hostname without a trailing backslash eg https://cloudos.lifebit.ai
 
 ### `workspace_id`
 
-The Lifebit CloudOS workspace id. It Can be found under Settings in the web application.
+The Lifebit CloudOS workspace id. It Can be found under Settings in the web application. It is recommended to use Github Action repository secrets to set up this variable.
 
 ### `project_name`
 
