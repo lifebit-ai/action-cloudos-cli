@@ -25,7 +25,6 @@ inputs:
   job_config:
     description: 'A local file with suffix .config, that includes only a params scope enclosed in curly brackets. The file should contain parameter key:value pairs. For example see: https://github.com/lifebit-ai/cloudos-cli/blob/dev/cloudos/examples/rnatoy.config'
     required: false
-    default: None
   nextflow_profile:
     description: 'One or many comma separated strings, indicating the nextflow profile/s to use with your job. Only applicable to Nextflow workflows.'
     required: false
@@ -33,11 +32,9 @@ inputs:
   git_commit:
     description: 'The exact whole 40 character commit hash to run for the selected pipeline. If not specified it defaults to the last commit of the default branch.'
     required: false
-    default: None
   git_tag:
     description: 'The version tag of the chosen workflow repository. It must exist in the repository'
     required: false
-    default: None
   job_name:
     description: 'A name to assign to the job run.'
     required: true
@@ -84,7 +81,7 @@ outputs:
 runs:
   using: 'docker'
   image: 'quay.io/lifebitaiorg/cloudos-py:v0.1.2'
-  # entrypoint: ["/bin/bash", "cloudos job run"]
+  entrypoint: 'entrypoint.sh'
   args:
     - ${{ inputs.apikey }}
     - ${{ inputs.cloudos_url }}
