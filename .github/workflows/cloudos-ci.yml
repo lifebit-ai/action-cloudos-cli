@@ -3,7 +3,7 @@ on: [push]
 jobs:
   custom_test:
     runs-on: ubuntu-latest
-    name: Local test with act
+    name: Dry run test for cloudos job run
     steps:
       - name: Checkout
         uses: actions/checkout@v2
