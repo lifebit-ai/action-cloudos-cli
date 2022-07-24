@@ -57,7 +57,7 @@ The Lifebit CloudOS workflow name. It can be created and selected from the Lifeb
 
 ### `job_config`
 
-A local file with suffix .config, that includes only a params scope enclosed in curly brackets. The file should contain parameter key:value pairs. For example see: https://github.com/lifebit-ai/cloudos-cli/blob/dev/cloudos/examples/rnatoy.config'
+A local file with suffix .config, that includes only a params scope enclosed in curly brackets. The file should contain parameter key:value pairs. For example see: [cloudos/examples/rnatoy.config'](https://github.com/lifebit-ai/cloudos-cli/blob/dev/cloudos/examples/rnatoy.config')
 
 
 ### `nextflow_profile`
@@ -115,4 +115,4 @@ Specific Cromwell server authentication token. Only required for WDL jobs.
 Name of the repository platform of the workflow. Default=github.
 ### `cloudos_cli_flag`
 
-Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]
+Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
