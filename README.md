@@ -1,1 +1,115 @@
-# action-custom-action
+# GitHub Action: Run Lifebit CloudOS jobs with cloudos-cli
+
+This github action uses the [`cloudos-cli`](https://github.com/lifebit-ai/cloudos-cli), the official Lifebit CloudOS API client, to launch jobs programmatically using the `cloudos job run` command.
+
+## Example usage
+
+```yaml
+on: [push]
+
+jobs:
+  cloudos_job_run:
+    runs-on: ubuntu-latest
+    name: Submit CloudOS job programmatically
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo cloudos command
+        uses: lifebit-ai/action-cloudos-cli@v0.1.0
+        id: cloudos_job_run
+        with:
+          apikey:  ${{ secrets.CLOUDOS_APIKEY }}
+          cloudos_url: 'https://cloudos.lifebit.ai'
+          workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
+          project_name: 'cloudos-cli-tests'
+          workflow_name: 'cgpu/rnatoy'
+          nextflow_profile: 'test'
+          cloudos_cli_flags: '--resumable --spot'
+```
+
+
+## Inputs
+
+
+### `apikey`
+
+The Lifebit CloudOS user personal API token.
+
+### `cloudos_url`
+
+The Lifebit CloudOS application hostname without a trailing backslash eg https://cloudos.lifebit.ai
+
+### `workspace_id`
+
+The Lifebit CloudOS workspace id. It Can be found under Settings in the web application.
+
+### `project_name`
+
+The Lifebit CloudOS workspace id. It can be created and selected from the Lifebit CloudOS web application user interface under Projects.
+
+### `workflow_name`
+
+The Lifebit CloudOS workflow name. It can be created and selected from the Lifebit CloudOS web application user interface under Pipelines & Tools.
+
+
+### `job_config`
+
+A local file with suffix .config, that includes only a params scope enclosed in curly brackets. The file should contain parameter key:value pairs. For example see: https://github.com/lifebit-ai/cloudos-cli/blob/dev/cloudos/examples/rnatoy.config'
+
+
+### `nextflow_profile`
+
+One or many comma separated strings, indicating the nextflow profile/s to use with your job. Only applicable to Nextflow workflows.'
+
+### `git_commit`
+
+The exact whole 40 character commit hash to run for the selected pipeline. If not specified it defaults to the last commit of the default branch.
+
+### `git_tag`
+
+The version tag of the chosen workflow repository. It must exist in the repository
+
+
+### `job_name`
+
+A name to assign to the job run.
+
+### `instance_type`
+
+The type of AWS EC2 instance to use as master node for the job eg c5.xlarge
+
+### `instance_disk`
+
+Disk storage in GB to be used for the master node vm.
+
+
+### `storage_mode`
+
+The storage mode to use. Available options: [regular,lustre]. Regular is EBS.
+
+### `lustre_size`
+
+The lustre storage to be used when --storage-mode=lustre, in GB. It should be 1200 or a multiple of it.'
+
+### `wait_time`
+
+Max time to wait (in seconds) to job completion
+
+### `wdl_mainfile`
+
+For WDL workflows, which mainFile (.wdl) is configured to use (string). This is defined when the WDL repository is imported under Pipelines & Tools using the Lifebit CloudOS web application user interface.
+
+### `wdl_importsfile`
+
+For WDL workflows, which importsFile (.zip) is configured to use (string). This is defined when the WDL repository is imported under Pipelines & Tools using the Lifebit CloudOS web application user interface.
+
+### `cromwell_token`
+
+Specific Cromwell server authentication token. Only required for WDL jobs.
+
+### `repository_platform`
+
+Name of the repository platform of the workflow. Default=github.
+### `cloudos_cli_flag`
+
+Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]
