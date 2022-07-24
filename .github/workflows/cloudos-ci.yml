@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  custom_test:
+    runs-on: ubuntu-latest
+    name: Local test with act
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo cloudos command
+        uses: ./ # Uses an action in the root directory
+        id: cloudos_job_run
+        with:
+          apikey:  ${{ secrets.CLOUDOS_APIKEY }}
+          cloudos_url: 'https://cloudos.lifebit.ai'
+          workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
+          project_name: 'cloudos-cli-tests'
+          workflow_name: 'cgpu/rnatoy'
+          nextflow_profile: 'test'
+          cloudos_cli_flags: '--resumable --spot'

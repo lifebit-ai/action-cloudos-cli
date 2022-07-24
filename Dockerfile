@@ -1,8 +1,8 @@
 # Base image
-FROM alpine:latest
+FROM quay.io/lifebitaiorg/cloudos-py:v0.1.2
 
 # installes required packages for our script
-RUN	apk add --no-cache \
+RUN	apt install -y \
   bash \
   ca-certificates \
   curl \

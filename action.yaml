@@ -8,11 +8,9 @@ inputs:
   apikey:
     description: 'Lifebit CloudOS user personal API token'
     required: true
-    default: '${{ secrets.CLOUDOS_APIKEY }}'
   cloudos_url:
     description: 'The Lifebit CloudOS application hostname without a trailing backslash eg https://cloudos.lifebit.ai'
     required: true
-    default: 'https://cloudos.lifebit.ai'
   workspace_id:
     description: 'The Lifebit CloudOS workspace id. It Can be found under Settings in the web application.'
     required: true
@@ -75,13 +73,9 @@ inputs:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
     default: ''
-outputs:
-  status:
-    description: 'Job submission status, could be either of [success, fail]'
 runs:
   using: 'docker'
-  image: 'quay.io/lifebitaiorg/cloudos-py:v0.1.2'
-  entrypoint: 'entrypoint.sh'
+  image: 'Dockerfile'
   args:
     - ${{ inputs.apikey }}
     - ${{ inputs.cloudos_url }}
