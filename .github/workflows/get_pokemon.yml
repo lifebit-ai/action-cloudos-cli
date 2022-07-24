@@ -1,0 +1,20 @@
+on:
+  push:
+  pull_request:
+    types: [review_requested, ready_for_review]
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+jobs:
+  custom_test:
+    runs-on: ubuntu-latest
+    name: We test it locally with act
+    steps:
+      - name: Get Pokemon name
+        uses: philschmid/blog-custom-github-action@master
+        id: pokemon
+        with:
+          pokemon_id: 4
+      - name: Get the pokemon
+        run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"

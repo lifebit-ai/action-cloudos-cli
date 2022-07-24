@@ -1,0 +1,19 @@
+# test action creation following https://www.philschmid.de/create-custom-github-action-in-4-steps
+name: 'Get pokemon name via API Github Action'
+branding:
+  icon: 'cloud'
+  color: 'blue'
+description: 'Call an API and get the result'
+inputs:
+  pokemon_id:
+    description: 'number of the pokemon in the pokedex'
+    required: true
+    default: 1
+outputs:
+  pokemon_name:
+    description: 'Name of chosen pokemon'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.pokemon_id}}
