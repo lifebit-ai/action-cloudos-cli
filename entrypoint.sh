@@ -25,5 +25,5 @@ if [[ ${INPUT_CROMWELL_TOKEN} ]];      then CLOUDOS_RUN_CMD+=" --cromwell-token 
 if [[ ${INPUT_REPOSITORY_PLATFORM} ]]; then CLOUDOS_RUN_CMD+=" --repository-platform ${INPUT_REPOSITORY_PLATFORM}" ; fi
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
-$CLOUDOS_RUN_CMD
+if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
 printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}"
