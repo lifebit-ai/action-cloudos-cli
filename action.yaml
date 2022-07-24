@@ -26,7 +26,6 @@ inputs:
   nextflow_profile:
     description: 'One or many comma separated strings, indicating the nextflow profile/s to use with your job. Only applicable to Nextflow workflows.'
     required: false
-    default: 'standard'
   git_commit:
     description: 'The exact whole 40 character commit hash to run for the selected pipeline. If not specified it defaults to the last commit of the default branch.'
     required: false
@@ -40,23 +39,18 @@ inputs:
   instance_type:
     description: 'The type of AWS EC2 instance to use as master node for the job eg c5.xlarge'
     required: false
-    default: 'c5.xlarge'
   instance_disk:
     description: 'Disk storage in GB to be used for the master node vm.'
     required: false
-    default: '500'
   storage_mode:
     description: 'The storage mode to use. Available options: [regular,lustre]. Regular is EBS.'
     required: false
-    default: 'regular'
   lustre_size:
     description: 'The lustre storage to be used when --storage-mode=lustre, in GB. It should be 1200 or a multiple of it.'
     required: false
-    default: '1200'
   wait_time:
     description: 'Max time to wait (in seconds) to job completion'
     required: false
-    default: '3600'
   wdl_mainfile:
     description: 'For WDL workflows, which mainFile (.wdl) is configured to use (string). This is defined when the WDL repository is imported under Pipelines & Tools using the Lifebit CloudOS web application user interface.'
     required: false
