@@ -30,6 +30,9 @@ jobs:
 
 ## Inputs
 
+### `dry_run`
+
+If set to `'true'` the action only prints the `cloudos job run` command instead of executing it. Secrets are stripped before printing. This mode can be used for testing.
 
 ### `apikey`
 
