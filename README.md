@@ -116,6 +116,6 @@ Specific Cromwell server authentication token. Only required for WDL jobs.
 ### `repository_platform`
 
 Name of the repository platform of the workflow. Default=github.
-### `cloudos_cli_flag`
+### `cloudos_cli_flags`
 
 Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
