@@ -71,7 +71,7 @@ inputs:
     description: 'Mode of execution for the action, by default the API call will be sent. Set to dry_run: true if you only want to print the command (strips secrets before printing).'
     required: false
     default: ''
-inputs:
+outputs:
   stdout:
     description: 'Output from Lifebit CloudOS cloudos-cli'
 runs:
