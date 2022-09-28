@@ -26,4 +26,7 @@ if [[ ${INPUT_REPOSITORY_PLATFORM} ]]; then CLOUDOS_RUN_CMD+=" --repository-plat
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
 if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
-printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}"
+stdout="${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}"
+printf '%s\n' $stdout
+
+echo "::set-output name=stdout::$stdout"
