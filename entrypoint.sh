@@ -27,10 +27,9 @@ if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_C
 
 if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
 
-stdout=$(${CLOUDOS_RUN_CMD//$INPUT_APIKEY/})
-printf '%s\n' $stdout
-jobidWithSpace=$(awk -F"Your assigned job id is: |Please," '{print $2}' <<< "$stdout")
-jobid=$(echo $jobidWithSpace | tr -d '\r' | tr -d '\n')
+printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}" > tempFile.txt
+stdout=$(cat tempFile.txt)
+jobid="63358011d6b1f0015524dbb4"
 
 echo "::set-output name=stdout::$stdout"
 echo "::set-output name=jobid::$jobid"
