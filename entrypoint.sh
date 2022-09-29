@@ -30,7 +30,7 @@ then
     stdout=$($CLOUDOS_RUN_CMD)
     echo $stdout
 
-    jobidWithSpace=$(awk -F"Your assigned job id is: |Please," '{print $2}' <<< "$stdout")
+    jobidWithSpace=$(awk -F"Your assigned job id is: |Please, wait until job completion or max wait time of 3600 seconds is reached." '{print $2}' <<< "$stdout")
     jobid=$(echo $jobidWithSpace | tr -d '\r' | tr -d '\n')
 else
     stdout="No job was run"
