@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash
 set -e
 
 CLOUDOS_RUN_CMD="cloudos job run"
@@ -25,10 +25,16 @@ if [[ ${INPUT_CROMWELL_TOKEN} ]];      then CLOUDOS_RUN_CMD+=" --cromwell-token 
 if [[ ${INPUT_REPOSITORY_PLATFORM} ]]; then CLOUDOS_RUN_CMD+=" --repository-platform ${INPUT_REPOSITORY_PLATFORM}" ; fi
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
-if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
+if [[ ${INPUT_DRY_RUN} != 'true' ]]
+then
+    stdout=$($CLOUDOS_RUN_CMD)
+fi
 
-stdout=$("$CLOUDOS_RUN_CMD")
-jobid="63358011d6b1f0015524dbb4"
+jobidWithSpace=$(awk -F"Your assigned job id is: |Please," '{print $2}' <<< "$stdout")
+jobid=$(echo $jobidWithSpace | tr -d '\r' | tr -d '\n')
+
+echo $stdout
+echo $jobid
 
 echo "::set-output name=stdout::$stdout"
 echo "::set-output name=jobid::$jobid"
