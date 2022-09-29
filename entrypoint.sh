@@ -31,5 +31,8 @@ printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}" > tempFile.txt
 stdout=$(cat tempFile.txt)
 jobid="63358011d6b1f0015524dbb4"
 
+echo $stdout
+echo $jobid
+
 echo "::set-output name=stdout::$stdout"
 echo "::set-output name=jobid::$jobid"
