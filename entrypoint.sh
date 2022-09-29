@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -e
 
 CLOUDOS_RUN_CMD="cloudos job run"
@@ -27,7 +27,7 @@ if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_C
 
 if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
 
-stdout=$(${CLOUDOS_RUN_CMD//$INPUT_APIKEY/})
+stdout=$("$CLOUDOS_RUN_CMD")
 jobid="63358011d6b1f0015524dbb4"
 
 echo "::set-output name=stdout::$stdout"
