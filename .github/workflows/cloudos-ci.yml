@@ -12,7 +12,7 @@ jobs:
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
-          cloudos_url: 'https://cloudos.lifebit.ai'
+          cloudos_url: 'https://staging.lifebit.ai'
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
           project_name: 'cloudos-cli-tests'
           workflow_name: 'rnatoy'
