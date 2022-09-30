@@ -3,12 +3,12 @@ on: [push]
 jobs:
   custom_test:
     runs-on: ubuntu-latest
-    name: Dry run test for cloudos job run
+    name: Test for cloudos job run
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Print cloudos job run command (dry_run set to true)
-        uses: lifebit-ai/action-cloudos-cli@0.1.1
+        uses: lifebit-ai/action-cloudos-cli@0.2.0
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
@@ -17,5 +17,10 @@ jobs:
           project_name: 'cloudos-cli-tests'
           workflow_name: 'cgpu/rnatoy'
           nextflow_profile: 'test'
-          cloudos_cli_flags: '--resumable --spot'
-          dry_run: 'true'
+          cloudos_cli_flags: '--resumable --spot --verbose --wait-completion'
+          request_interval: 60
+          dry_run: 'false'
+          instance_type: 't3.micro'
+          instance_disk: 40
+          wait_time: 7200
+          
