@@ -66,6 +66,7 @@ inputs:
   request_interval: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
     description: 
     required: false
+    default: 50
   cloudos_cli_flags:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
