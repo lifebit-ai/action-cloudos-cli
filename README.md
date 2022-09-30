@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo cloudos command
-        uses: lifebit-ai/action-cloudos-cli@0.1.1
+        uses: lifebit-ai/action-cloudos-cli@0.2.0
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
@@ -116,6 +116,11 @@ Specific Cromwell server authentication token. Only required for WDL jobs.
 ### `repository_platform`
 
 Name of the repository platform of the workflow. Default=github.
+
+### `request_interval`
+
+Request interval in seconds. The options is influencing the request interval for receiving the job status when `--wait-completion` is used. The default value is the same as the default of [](https://github.com/lifebit-ai/cloudos-cli).
+
 ### `cloudos_cli_flags`
 
 Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
