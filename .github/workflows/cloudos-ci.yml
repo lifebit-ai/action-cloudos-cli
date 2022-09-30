@@ -15,7 +15,7 @@ jobs:
           cloudos_url: 'https://cloudos.lifebit.ai'
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
           project_name: 'cloudos-cli-tests'
-          workflow_name: 'cgpu/rnatoy'
+          workflow_name: 'rnatoy'
           nextflow_profile: 'test'
           cloudos_cli_flags: '--resumable --spot --verbose --wait-completion'
           request_interval: 60
