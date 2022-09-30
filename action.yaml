@@ -63,6 +63,9 @@ inputs:
   repository_platform:
     description: 'Name of the repository platform of the workflow. Default=github.'
     required: false
+  request_interval: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
+    description: 
+    required: false
   cloudos_cli_flags:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
@@ -94,5 +97,6 @@ runs:
     - ${{ inputs.wdl_importsfile }}
     - ${{ inputs.cromwell_token }}
     - ${{ inputs.repository_platform }}
+    - ${{ inputs.request_interval}}
     - ${{ inputs.cloudos_cli_flags}}
     - ${{ inputs.dry_run}}
