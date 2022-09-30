@@ -33,9 +33,7 @@ then
     job_idWithSpace=$(awk -F"Your assigned job id is: |Please, wait until job completion or max wait time of 3600 seconds is reached." '{print $2}' <<< "$stdout")
     job_id=$(echo $job_idWithSpace | tr -d '\r' | tr -d '\n')
 else
-    stdout="No job was run"
     job_id=""
 fi
 
-echo "::set-output name=stdout::$stdout"
 echo "::set-output name=job_id::$job_id"

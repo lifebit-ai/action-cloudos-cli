@@ -74,8 +74,6 @@ inputs:
 outputs:
   job_id:
     description: 'Job ID from Lifebit CloudOS cloudos-cli'
-  stdout:
-    description: 'Output from Lifebit CloudOS cloudos-cli'
 runs:
   using: 'docker'
   image: 'Dockerfile'
