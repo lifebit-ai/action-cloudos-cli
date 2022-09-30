@@ -72,7 +72,7 @@ inputs:
     required: false
     default: ''
 outputs:
-  jobid:
+  job_id:
     description: 'Job ID from Lifebit CloudOS cloudos-cli'
   stdout:
     description: 'Output from Lifebit CloudOS cloudos-cli'
