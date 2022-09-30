@@ -63,8 +63,8 @@ inputs:
   repository_platform:
     description: 'Name of the repository platform of the workflow. Default=github.'
     required: false
-  request_interval: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
-    description: 
+  request_interval: 
+    description: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
     required: false
     default: 50
   cloudos_cli_flags:
