@@ -66,7 +66,6 @@ inputs:
   request_interval: 
     description: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
     required: false
-    default: 50
   cloudos_cli_flags:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
@@ -74,7 +73,7 @@ inputs:
   dry_run:
     description: 'Mode of execution for the action, by default the API call will be sent. Set to dry_run: true if you only want to print the command (strips secrets before printing).'
     required: false
-    default: ''
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
