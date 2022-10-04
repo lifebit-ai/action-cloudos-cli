@@ -23,4 +23,6 @@ jobs:
           instance_type: 't3.micro'
           instance_disk: 40
           wait_time: 7200
-          
+          cost_limit: 0.1
+
+
