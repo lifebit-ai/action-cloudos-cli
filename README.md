@@ -117,6 +117,9 @@ Specific Cromwell server authentication token. Only required for WDL jobs.
 
 Name of the repository platform of the workflow. Default=github.
 
+### `cost_limit`
+
+Cost limit in USD. If the job exceeds the defined cost limit, the job will be aborted. :warning: It is advised to always use a cost limit to avoid jobs running indefinitely if there is a pipeline issue.
 ### `request_interval`
 
 Request interval in seconds. The options is influencing the request interval for receiving the job status when `--wait-completion` is used. The default value is the same as the default of [](https://github.com/lifebit-ai/cloudos-cli).
@@ -124,3 +127,4 @@ Request interval in seconds. The options is influencing the request interval for
 ### `cloudos_cli_flags`
 
 Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
+

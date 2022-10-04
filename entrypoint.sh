@@ -24,6 +24,7 @@ if [[ ${INPUT_WDL_IMPORTSFILE} ]];     then CLOUDOS_RUN_CMD+=" --wdl-importsfile
 if [[ ${INPUT_CROMWELL_TOKEN} ]];      then CLOUDOS_RUN_CMD+=" --cromwell-token ${INPUT_CROMWELL_TOKEN}" ; fi
 if [[ ${INPUT_REPOSITORY_PLATFORM} ]]; then CLOUDOS_RUN_CMD+=" --repository-platform ${INPUT_REPOSITORY_PLATFORM}" ; fi
 if [[ ${INPUT_REQUEST_INTERVAL} ]];    then CLOUDOS_RUN_CMD+=" --request-interval ${INPUT_REQUEST_INTERVAL}" ; fi
+if [[ ${INPUT_COST_LIMIT} ]];          then CLOUDOS_RUN_CMD+=" --cost-limit ${INPUT_COST_LIMIT}" ; fi
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
 if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
