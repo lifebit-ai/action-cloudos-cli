@@ -1,0 +1,2 @@
+# require 1 PR approval from delivery-admins if the files changed are within the .github folder
+* @lifebit-ai/delivery-admins
