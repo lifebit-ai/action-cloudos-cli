@@ -128,3 +128,8 @@ Request interval in seconds. The options is influencing the request interval for
 
 Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
 
+## Outputs
+
+### `job_id`
+
+Job ID extracted from Lifebit CloudOS cloudos-cli.

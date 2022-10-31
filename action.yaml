@@ -63,7 +63,7 @@ inputs:
   repository_platform:
     description: 'Name of the repository platform of the workflow. Default=github.'
     required: false
-  request_interval: 
+  request_interval:
     description: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
     required: false
   cost_limit:
@@ -77,6 +77,9 @@ inputs:
     description: 'Mode of execution for the action, by default the API call will be sent. Set to dry_run: true if you only want to print the command (strips secrets before printing).'
     required: false
     default: false
+outputs:
+   job_id:
+     description: 'Job ID from Lifebit CloudOS cloudos-cli'
 runs:
   using: 'docker'
   image: 'Dockerfile'
