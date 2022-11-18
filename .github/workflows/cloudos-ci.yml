@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Print cloudos job run command (dry_run set to true)
-        uses: lifebit-ai/action-cloudos-cli@0.2.0
+        uses: lifebit-ai/action-cloudos-cli@0.3.0
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
@@ -24,5 +24,7 @@ jobs:
           instance_disk: 40
           wait_time: 7200
           cost_limit: 0.1
+      - name: Get the cloudos_job_run job ID
+        run: echo ${{steps.cloudos_job_run.outputs.job_id}}
 
 
