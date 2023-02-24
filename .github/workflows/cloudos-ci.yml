@@ -12,6 +12,7 @@ jobs:
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
+          cloudos_url: "https://staging.lifebit.ai"
           apikey:  ${{ secrets.CLOUDOS_TOKEN }}
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
           project_name: "cloudos-cli-tests"
@@ -22,7 +23,6 @@ jobs:
           instance_disk: "40"
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
           cloudos_cli_flags: "--spot --wait-completion"
-          cloudos_url: "https://staging.lifebit.ai"
 
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
