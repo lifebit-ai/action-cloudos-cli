@@ -21,7 +21,6 @@ jobs:
           git_commit: "${{ github.event.pull_request.head.sha }}"
           instance_type: "m5.4xlarge"
           instance_disk: "40"
-          dry_run: true
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
           cloudos_cli_flags: "--spot --wait-completion"
 
