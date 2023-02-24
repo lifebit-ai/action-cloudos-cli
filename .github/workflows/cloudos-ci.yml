@@ -12,7 +12,7 @@ jobs:
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
-          apikey:  ${{ secrets.CLOUDOS_APIKEY }}
+          apikey:  ${{ secrets.CLOUDOS_TOKEN }}
           cloudos_url: 'https://staging.lifebit.ai'
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
           project_name: "cloudos-cli-tests"
