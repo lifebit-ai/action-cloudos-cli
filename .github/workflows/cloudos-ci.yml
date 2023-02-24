@@ -6,14 +6,13 @@ jobs:
     name: Test for cloudos job run
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Print cloudos job run command (dry_run set to true)
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_TOKEN }}
-          cloudos_url: "https://staging.lifebit.ai"
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
           project_name: "cloudos-cli-tests"
           workflow_name: "rnatoy"
@@ -22,6 +21,7 @@ jobs:
           instance_type: "m5.4xlarge"
           instance_disk: "40"
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
+          cloudos_url: "https://staging.lifebit.ai"
           cloudos_cli_flags: "--spot --wait-completion"
 
       - name: Get the cloudos_job_run job ID
