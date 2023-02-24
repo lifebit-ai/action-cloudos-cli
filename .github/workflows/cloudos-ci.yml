@@ -18,13 +18,11 @@ jobs:
           project_name: 'cloudos-cli-tests'
           workflow_name: 'rnatoy'
           nextflow_profile: 'test'
-          cloudos_cli_flags: '--resumable --spot --verbose --wait-completion'
-          request_interval: 60
-          dry_run: 'false'
-          instance_type: 'c5.xlarge'
-          instance_disk: 40
-          wait_time: 7200
+          git_commit: '${{ github.event.pull_request.head.sha }}'
+          instance_type: 'm5.4xlarge'
+          instance_disk: '40'
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
+          cloudos_cli_flags: '--spot --wait-completion'
 
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
