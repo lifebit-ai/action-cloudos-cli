@@ -15,13 +15,13 @@ jobs:
           apikey:  ${{ secrets.CLOUDOS_TOKEN }}
           cloudos_url: 'https://staging.lifebit.ai'
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
-          project_name: 'ci-testing'
-          workflow_name: 'etl_profile_clean'
-          nextflow_profile: 'meta_ci_testing'
-          git_commit: '${{ github.event.pull_request.head.sha }}'
-          instance_type: 'm5.4xlarge'
-          instance_disk: '40'
+          project_name: "cloudos-cli-tests"
+          workflow_name: "rnatoy"
+          nextflow_profile: "test"
+          git_commit: "${{ github.event.pull_request.head.sha }}"
+          instance_type: "m5.4xlarge"
+          instance_disk: "40"
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
-          cloudos_cli_flags: '--spot --wait-completion'
+          cloudos_cli_flags: "--spot --wait-completion"
 
 
