@@ -6,12 +6,13 @@ jobs:
     name: Test for cloudos job run
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Print cloudos job run command (dry_run set to true)
+        uses: actions/checkout@v3
+
+      - name: Run cloudos job run command
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
-          apikey:  ${{ secrets.CLOUDOS_APIKEY }}
+          apikey:  ${{ secrets.CLOUDOS_TOKEN }}
           cloudos_url: 'https://staging.lifebit.ai'
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
           project_name: 'cloudos-cli-tests'
@@ -19,11 +20,12 @@ jobs:
           nextflow_profile: 'test'
           cloudos_cli_flags: '--resumable --spot --verbose --wait-completion'
           request_interval: 60
-          dry_run: 'false'
           instance_type: 'c5.xlarge'
           instance_disk: 40
           wait_time: 7200
+          git_commit: '${{ github.event.pull_request.head.sha }}'
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
+
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
 
