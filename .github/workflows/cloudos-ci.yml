@@ -23,7 +23,6 @@ jobs:
           instance_type: 'c5.xlarge'
           instance_disk: 40
           wait_time: 7200
-          git_commit: '${{ github.event.pull_request.head.sha }}'
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
 
       - name: Get the cloudos_job_run job ID
