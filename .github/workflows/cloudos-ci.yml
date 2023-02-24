@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Print cloudos job run command (dry_run set to true)
+      - name: Run cloudos job run command
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
