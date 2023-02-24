@@ -23,7 +23,7 @@ jobs:
           instance_type: 'c5.xlarge'
           instance_disk: 40
           wait_time: 7200
-          cost_limit: 0.1
+          cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
 
