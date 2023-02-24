@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Print cloudos job run command (dry_run set to true)
-        uses: lifebit-ai/action-cloudos-cli@0.3.1
+        uses: lifebit-ai/action-cloudos-cli@0.3.0
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_TOKEN }}
@@ -21,8 +21,8 @@ jobs:
           instance_type: "m5.4xlarge"
           instance_disk: "40"
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
-          cloudos_url: "https://staging.lifebit.ai"
           cloudos_cli_flags: "--spot --wait-completion"
+          cloudos_url: "https://staging.lifebit.ai"
 
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
