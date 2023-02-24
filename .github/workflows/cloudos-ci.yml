@@ -13,16 +13,16 @@ jobs:
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_TOKEN }}
-          cloudos_url: 'https://staging.lifebit.ai'
+          cloudos_url: "https://staging.lifebit.ai"
           workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
-          project_name: 'cloudos-cli-tests'
-          workflow_name: 'rnatoy'
-          nextflow_profile: 'test'
-          git_commit: '${{ github.event.pull_request.head.sha }}'
-          instance_type: 'm5.4xlarge'
-          instance_disk: '40'
+          project_name: "cloudos-cli-tests"
+          workflow_name: "rnatoy"
+          nextflow_profile: "test"
+          git_commit: "${{ github.event.pull_request.head.sha }}"
+          instance_type: "m5.4xlarge"
+          instance_disk: "40"
           cost_limit: ${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}
-          cloudos_cli_flags: '--spot --wait-completion'
+          cloudos_cli_flags: "--spot --wait-completion"
 
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
