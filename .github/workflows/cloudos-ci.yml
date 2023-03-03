@@ -1,4 +1,9 @@
-on: [push]
+on:
+   pull_request:
+     types: [review_requested, ready_for_review]
+     branches:
+      - main
+      - dev
 
 jobs:
   custom_test:
@@ -12,16 +17,16 @@ jobs:
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
-          apikey:  "${{ secrets.CLOUDOS_TEMP_TOKEN }}"
+          apikey:  "${{ secrets.CLOUDOS_TOKEN }}"
           cloudos_url: 'https://staging.lifebit.ai'
-          workspace_id: "${{ secrets.CLOUDOS_TEMP_WORKSPACE_ID }}"
+          workspace_id: "${{ secrets.CLOUDOS_WORKSPACE_ID }}"
           project_name: "ci-testing"
-          workflow_name: "rnatoy"
-          nextflow_profile: "test"
+          workflow_name: "etl_profile_clean"
+          nextflow_profile: "internal_ci_profile_clean"
           git_commit: "${{ github.event.pull_request.head.sha }}"
           instance_type: "m5.4xlarge"
           instance_disk: "40"
-          cost_limit: "2"
+          cost_limit: "${{ secrets.GLOBAL_CLOUDOS_JOB_COST_LIMIT }}"
           cloudos_cli_flags: "--spot --wait-completion"
 
 
