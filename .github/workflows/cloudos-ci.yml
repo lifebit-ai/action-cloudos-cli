@@ -23,7 +23,6 @@ jobs:
           project_name: "ci-testing"
           workflow_name: "etl_profile_clean"
           nextflow_profile: "internal_ci_profile_clean"
-          git_commit: "${{ github.event.pull_request.head.sha }}"
           instance_type: "m5.4xlarge"
           instance_disk: "40"
           cost_limit: "2"
