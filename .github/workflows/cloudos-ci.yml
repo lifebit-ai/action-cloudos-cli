@@ -12,9 +12,9 @@ jobs:
         uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
-          apikey:  "${{ secrets.CLOUDOS_TOKEN }}"
+          apikey:  "${{ secrets.CLOUDOS_TEMP_TOKEN }}"
           cloudos_url: 'https://staging.lifebit.ai'
-          workspace_id: "6323318f39fff801570a1b62"
+          workspace_id: "${{ secrets.CLOUDOS_TEMP_WORKSPACE_ID }}"
           project_name: "ci-testing"
           workflow_name: "rnatoy"
           nextflow_profile: "test"
