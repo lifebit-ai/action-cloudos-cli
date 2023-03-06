@@ -37,4 +37,4 @@ then
 else
     job_id=""
 fi
-echo "::set-output name=job_id::$job_id"
+echo "{job_id}={$job_id}" >> $GITHUB_OUTPUT

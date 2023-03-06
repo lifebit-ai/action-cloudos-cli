@@ -1,4 +1,9 @@
-on: [push]
+on:
+   pull_request:
+     types: [review_requested, ready_for_review]
+     branches:
+      - main
+      - dev
 
 jobs:
   custom_test:
@@ -6,25 +11,22 @@ jobs:
     name: Test for cloudos job run
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Print cloudos job run command (dry_run set to true)
-        uses: lifebit-ai/action-cloudos-cli@0.3.0
+        uses: actions/checkout@v3
+
+      - name: Run cloudos job run command
+        uses: lifebit-ai/action-cloudos-cli@0.3.1
         id: cloudos_job_run
         with:
-          apikey:  ${{ secrets.CLOUDOS_APIKEY }}
+          apikey:  "${{ secrets.CLOUDOS_TOKEN }}"
           cloudos_url: 'https://staging.lifebit.ai'
-          workspace_id: ${{ secrets.CLOUDOS_WORKSPACE_ID }}
-          project_name: 'cloudos-cli-tests'
-          workflow_name: 'rnatoy'
-          nextflow_profile: 'test'
-          cloudos_cli_flags: '--resumable --spot --verbose --wait-completion'
-          request_interval: 60
-          dry_run: 'false'
-          instance_type: 'c5.xlarge'
-          instance_disk: 40
-          wait_time: 7200
-          cost_limit: 0.1
+          workspace_id: "${{ secrets.CLOUDOS_WORKSPACE_ID }}"
+          project_name: "ci-testing"
+          workflow_name: "etl_profile_clean"
+          nextflow_profile: "internal_ci_profile_clean"
+          instance_type: "m5.4xlarge"
+          instance_disk: "40"
+          cost_limit: "2"
+          cloudos_cli_flags: "--spot --wait-completion"
+
       - name: Get the cloudos_job_run job ID
         run: echo ${{steps.cloudos_job_run.outputs.job_id}}
-
-
