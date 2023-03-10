@@ -63,7 +63,7 @@ inputs:
   repository_platform:
     description: 'Name of the repository platform of the workflow. Default=github.'
     required: false
-  request_interval: 
+  request_interval:
     description: 'Request interval in seconds. The options is influencing the request interval for receiving the job status when --wait-completion is used'
     required: false
   cost_limit:
