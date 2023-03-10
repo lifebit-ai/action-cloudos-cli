@@ -30,7 +30,7 @@ if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_C
 if [[ ${INPUT_DRY_RUN} != 'true' ]]
 then
     stdout=$($CLOUDOS_RUN_CMD)
-    printf '%s\n' $stdout
+    echo $stdout
 
     job_idWithSpace=$(awk -F"Your assigned job id is: |Please, wait until job completion or max wait time of 3600 seconds is reached." '{print $2}' <<< "$stdout")
     job_id=$(echo $job_idWithSpace | tr -d '\r' | tr -d '\n')
