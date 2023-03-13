@@ -33,7 +33,9 @@ printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}"
 if [[ ${INPUT_DRY_RUN} != 'true' ]]
 then
     stdout=$($CLOUDOS_RUN_CMD)
-    echo $stdout
+
+    echo "Result: "
+    tr '. ' '\n' < $stdout
 
     job_idWithSpace=$(awk -F"Your assigned job id is: |Please, wait until job completion or max wait time of 3600 seconds is reached." '{print $2}' <<< "$stdout")
     job_id=$(echo $job_idWithSpace | tr -d '\r' | tr -d '\n')
@@ -41,5 +43,4 @@ else
     job_id=""
 fi
 
-job_id=""
 echo "::set-output name=job_id::$job_id"
