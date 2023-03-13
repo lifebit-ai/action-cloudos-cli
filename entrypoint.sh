@@ -27,8 +27,19 @@ if [[ ${INPUT_REQUEST_INTERVAL} ]];    then CLOUDOS_RUN_CMD+=" --request-interva
 if [[ ${INPUT_COST_LIMIT} ]];          then CLOUDOS_RUN_CMD+=" --cost-limit ${INPUT_COST_LIMIT}" ; fi
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
-if [[ ${INPUT_DRY_RUN} != 'true' ]]; then $CLOUDOS_RUN_CMD ; fi
+echo "Command: "
 printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}"
+
+if [[ ${INPUT_DRY_RUN} != 'true' ]]
+then
+    stdout=$($CLOUDOS_RUN_CMD)
+    echo $stdout
+
+    job_idWithSpace=$(awk -F"Your assigned job id is: |Please, wait until job completion or max wait time of 3600 seconds is reached." '{print $2}' <<< "$stdout")
+    job_id=$(echo $job_idWithSpace | tr -d '\r' | tr -d '\n')
+else
+    job_id=""
+fi
 
 job_id=""
 echo "::set-output name=job_id::$job_id"
