@@ -36,8 +36,11 @@ inputs:
     description: 'A name to assign to the job run.'
     required: true
     default: job-via-github-actions-ci
+  execution_platform:
+    description: 'Name of the cloud provider used in your CloudOS workspace. Available options: [aws, azure]. Default: aws'
+    required: false
   instance_type:
-    description: 'The type of AWS EC2 instance to use as master node for the job eg c5.xlarge'
+    description: 'Name of the virtual machine type as defined by the respective cloud provider to use as master node for the job. Default conditional to the cloud provider: c5.xlarge (aws) or Standard_D4as_v4 (azure).'
     required: false
   instance_disk:
     description: 'Disk storage in GB to be used for the master node vm.'
@@ -69,6 +72,9 @@ inputs:
   cost_limit:
     description: 'Cost limit in USD. If the job exceeds the defined cost limit, the job will be aborted. It is advised to always use a cost limit.'
     required: false
+  job_queue:
+    description: "Name of the job batch queue to use with a batch job execution. Default: workspace default."
+    required: false
   cloudos_cli_flags:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
@@ -76,7 +82,6 @@ inputs:
   dry_run:
     description: 'Mode of execution for the action, by default the API call will be sent. Set to dry_run: true if you only want to print the command (strips secrets before printing).'
     required: false
-    default: false
 outputs:
    job_id:
      description: 'Job ID from Lifebit CloudOS cloudos-cli'
@@ -94,6 +99,7 @@ runs:
     - ${{ inputs.git_commit }}
     - ${{ inputs.git_tag }}
     - ${{ inputs.job_name }}
+    - ${{ inputs.execution_platform }}
     - ${{ inputs.instance_type }}
     - ${{ inputs.instance_disk }}
     - ${{ inputs.storage_mode }}
@@ -104,5 +110,7 @@ runs:
     - ${{ inputs.cromwell_token }}
     - ${{ inputs.repository_platform }}
     - ${{ inputs.request_interval}}
+    - ${{ inputs.cost_limit}}
+    - ${{ inputs.job_queue}}
     - ${{ inputs.cloudos_cli_flags}}
     - ${{ inputs.dry_run}}
