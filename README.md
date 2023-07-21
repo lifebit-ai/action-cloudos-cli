@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo cloudos command
-        uses: lifebit-ai/action-cloudos-cli@0.2.0
+        uses: lifebit-ai/action-cloudos-cli@0.3.3
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
@@ -24,7 +24,8 @@ jobs:
           project_name: 'cloudos-cli-tests'
           workflow_name: 'cgpu/rnatoy'
           nextflow_profile: 'test'
-          cloudos_cli_flags: '--resumable --spot'
+          cost_limit: 2
+          cloudos_cli_flags: '--resumable --spot --batch'
 ```
 
 
@@ -80,6 +81,10 @@ The version tag of the chosen workflow repository. It must exist in the reposito
 
 A name to assign to the job run.
 
+### `execution_platform`
+
+Name of the cloud provider used in your CloudOS workspace. Available options: [`aws`, `azure`]. Default: `aws`
+
 ### `instance_type`
 
 The type of AWS EC2 instance to use as master node for the job eg c5.xlarge
@@ -123,6 +128,10 @@ Cost limit in USD. If the job exceeds the defined cost limit, the job will be ab
 ### `request_interval`
 
 Request interval in seconds. The options is influencing the request interval for receiving the job status when `--wait-completion` is used. The default value is the same as the default of [](https://github.com/lifebit-ai/cloudos-cli).
+
+### `job_queue`
+
+Name of the job batch queue to use with a batch job execution. Default: workspace default. The parameter is optional and conditional to only when using `--batch`. If `--batch` is not used, the parameter will be ignored.
 
 ### `cloudos_cli_flags`
 
