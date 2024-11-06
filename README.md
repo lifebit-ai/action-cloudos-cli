@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo cloudos command
-        uses: lifebit-ai/action-cloudos-cli@0.3.3
+        uses: lifebit-ai/action-cloudos-cli@0.3.5
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
@@ -25,7 +25,7 @@ jobs:
           workflow_name: 'cgpu/rnatoy'
           nextflow_profile: 'test'
           cost_limit: 2
-          cloudos_cli_flags: '--resumable --spot --batch'
+          cloudos_cli_flags: '--resumable'
 ```
 
 
@@ -129,13 +129,9 @@ Cost limit in USD. If the job exceeds the defined cost limit, the job will be ab
 
 Request interval in seconds. The options is influencing the request interval for receiving the job status when `--wait-completion` is used. The default value is the same as the default of [](https://github.com/lifebit-ai/cloudos-cli).
 
-### `job_queue`
-
-Name of the job batch queue to use with a batch job execution. Default: workspace default. The parameter is optional and conditional to only when using `--batch`. If `--batch` is not used, the parameter will be ignored.
-
 ### `cloudos_cli_flags`
 
-Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
+Additional cloudos-cli flags, space separated eg `'--resumable'`. Available options: `[--resumable, --verbose, --wait-completion]`
 
 ## Outputs
 

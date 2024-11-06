@@ -72,9 +72,6 @@ inputs:
   cost_limit:
     description: 'Cost limit in USD. If the job exceeds the defined cost limit, the job will be aborted. It is advised to always use a cost limit.'
     required: false
-  job_queue:
-    description: "Name of the job batch queue to use with a batch job execution. Default: workspace default."
-    required: false
   cloudos_cli_flags:
     description: 'Additional cloudos-cli flags, space separated eg "--spot --resumable". Available options: [--spot, --batch, --resumable, --verbose, --wait-completion]'
     required: false
@@ -111,6 +108,5 @@ runs:
     - ${{ inputs.repository_platform }}
     - ${{ inputs.request_interval}}
     - ${{ inputs.cost_limit}}
-    - ${{ inputs.job_queue}}
     - ${{ inputs.cloudos_cli_flags}}
     - ${{ inputs.dry_run}}

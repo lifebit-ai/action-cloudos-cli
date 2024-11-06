@@ -26,7 +26,6 @@ if [[ ${INPUT_CROMWELL_TOKEN} ]];      then CLOUDOS_RUN_CMD+=" --cromwell-token 
 if [[ ${INPUT_REPOSITORY_PLATFORM} ]]; then CLOUDOS_RUN_CMD+=" --repository-platform ${INPUT_REPOSITORY_PLATFORM}" ; fi
 if [[ ${INPUT_REQUEST_INTERVAL} ]];    then CLOUDOS_RUN_CMD+=" --request-interval ${INPUT_REQUEST_INTERVAL}" ; fi
 if [[ ${INPUT_COST_LIMIT} ]];          then CLOUDOS_RUN_CMD+=" --job-queue ${INPUT_JOB_QUEUE}" ; fi
-if [[ ${INPUT_JOB_QUEUE} ]];           then CLOUDOS_RUN_CMD+=" --cost-limit ${INPUT_COST_LIMIT}" ; fi
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
 echo "Command: "
