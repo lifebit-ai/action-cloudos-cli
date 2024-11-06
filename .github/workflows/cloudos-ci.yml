@@ -18,7 +18,7 @@ jobs:
         id: cloudos_job_run
         with:
           apikey:  "${{ secrets.CLOUDOS_TOKEN }}"
-          cloudos_url: 'https://staging.lifebit.ai'
+          cloudos_url: 'https://stg.sdlc.lifebit.ai'
           workspace_id: "${{ secrets.CLOUDOS_WORKSPACE_ID }}"
           project_name: "ci-testing"
           workflow_name: "etl_profile_clean"
