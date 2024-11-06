@@ -122,6 +122,10 @@ Specific Cromwell server authentication token. Only required for WDL jobs.
 
 Name of the repository platform of the workflow. Default=github.
 
+### `job_queue`
+
+Name of the job batch queue to use with a batch job execution. Default: workspace default.
+
 ### `cost_limit`
 
 Cost limit in USD. If the job exceeds the defined cost limit, the job will be aborted. :warning: It is advised to always use a cost limit to avoid jobs running indefinitely if there is a pipeline issue.
