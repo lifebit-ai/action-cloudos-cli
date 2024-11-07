@@ -14,6 +14,7 @@ if [[ ${INPUT_NEXTFLOW_PROFILE} ]];    then CLOUDOS_RUN_CMD+=" --nextflow-profil
 if [[ ${INPUT_GIT_COMMIT} ]];          then CLOUDOS_RUN_CMD+=" --git-commit ${INPUT_GIT_COMMIT}" ; fi
 if [[ ${INPUT_GIT_TAG} ]];             then CLOUDOS_RUN_CMD+=" --git-tag ${INPUT_GIT_TAG}" ; fi
 if [[ ${INPUT_JOB_NAME} ]];            then CLOUDOS_RUN_CMD+=" --job-name ${INPUT_JOB_NAME}" ; fi
+if [[ ${INPUT_EXECUTION_PLATFORM} ]];        then CLOUDOS_RUN_CMD+=" --execution-platform ${EXECUTION_PLATFORM}" ; fi
 if [[ ${INPUT_INSTANCE_TYPE} ]];       then CLOUDOS_RUN_CMD+=" --instance-type ${INPUT_INSTANCE_TYPE}" ; fi
 if [[ ${INPUT_INSTANCE_DISK} ]];       then CLOUDOS_RUN_CMD+=" --instance-disk ${INPUT_INSTANCE_DISK}" ; fi
 if [[ ${INPUT_STORAGE_MODE} ]];        then CLOUDOS_RUN_CMD+=" --storage-mode ${INPUT_STORAGE_MODE}" ; fi
@@ -24,7 +25,8 @@ if [[ ${INPUT_WDL_IMPORTSFILE} ]];     then CLOUDOS_RUN_CMD+=" --wdl-importsfile
 if [[ ${INPUT_CROMWELL_TOKEN} ]];      then CLOUDOS_RUN_CMD+=" --cromwell-token ${INPUT_CROMWELL_TOKEN}" ; fi
 if [[ ${INPUT_REPOSITORY_PLATFORM} ]]; then CLOUDOS_RUN_CMD+=" --repository-platform ${INPUT_REPOSITORY_PLATFORM}" ; fi
 if [[ ${INPUT_REQUEST_INTERVAL} ]];    then CLOUDOS_RUN_CMD+=" --request-interval ${INPUT_REQUEST_INTERVAL}" ; fi
-if [[ ${INPUT_COST_LIMIT} ]];          then CLOUDOS_RUN_CMD+=" --cost-limit ${INPUT_COST_LIMIT}" ; fi
+if [[ ${INPUT_JOB_QUEUE} ]];          then CLOUDOS_RUN_CMD+=" --job-queue ${INPUT_JOB_QUEUE}" ; fi
+if [[ ${INPUT_COST_LIMIT} ]];           then CLOUDOS_RUN_CMD+=" --cost-limit ${INPUT_COST_LIMIT}" ; fi
 if [[ ${INPUT_CLOUDOS_CLI_FLAGS} ]];   then CLOUDOS_RUN_CMD+=" ${INPUT_CLOUDOS_CLI_FLAGS}" ; fi
 
 echo "Command: "

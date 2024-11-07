@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo cloudos command
-        uses: lifebit-ai/action-cloudos-cli@0.2.0
+        uses: lifebit-ai/action-cloudos-cli@0.3.5
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
@@ -24,7 +24,8 @@ jobs:
           project_name: 'cloudos-cli-tests'
           workflow_name: 'cgpu/rnatoy'
           nextflow_profile: 'test'
-          cloudos_cli_flags: '--resumable --spot'
+          cost_limit: 2
+          cloudos_cli_flags: '--resumable'
 ```
 
 
@@ -80,6 +81,10 @@ The version tag of the chosen workflow repository. It must exist in the reposito
 
 A name to assign to the job run.
 
+### `execution_platform`
+
+Name of the cloud provider used in your CloudOS workspace. Available options: [`aws`, `azure`]. Default: `aws`
+
 ### `instance_type`
 
 The type of AWS EC2 instance to use as master node for the job eg c5.xlarge
@@ -117,6 +122,10 @@ Specific Cromwell server authentication token. Only required for WDL jobs.
 
 Name of the repository platform of the workflow. Default=github.
 
+### `job_queue`
+
+Name of the job batch queue to use with a batch job execution. Default: workspace default.
+
 ### `cost_limit`
 
 Cost limit in USD. If the job exceeds the defined cost limit, the job will be aborted. :warning: It is advised to always use a cost limit to avoid jobs running indefinitely if there is a pipeline issue.
@@ -126,7 +135,7 @@ Request interval in seconds. The options is influencing the request interval for
 
 ### `cloudos_cli_flags`
 
-Additional cloudos-cli flags, space separated eg `'--spot --resumable'`. Available options: `[--spot, --batch, --resumable, --verbose, --wait-completion]`
+Additional cloudos-cli flags, space separated eg `'--resumable'`. Available options: `[--resumable, --verbose, --wait-completion]`
 
 ## Outputs
 
