@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo cloudos command
-        uses: lifebit-ai/action-cloudos-cli@0.3.7
+        uses: lifebit-ai/action-cloudos-cli@0.3.8
         id: cloudos_job_run
         with:
           apikey:  ${{ secrets.CLOUDOS_APIKEY }}
