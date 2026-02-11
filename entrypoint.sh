@@ -7,7 +7,7 @@ CLOUDOS_RUN_CMD+=" --apikey ${INPUT_APIKEY}"
 CLOUDOS_RUN_CMD+=" --cloudos-url ${INPUT_CLOUDOS_URL}"
 CLOUDOS_RUN_CMD+=" --workspace-id ${INPUT_WORKSPACE_ID}"
 CLOUDOS_RUN_CMD+=" --project-name ${INPUT_PROJECT_NAME}"
-CLOUDOS_RUN_CMD+=" --workflow-name '${INPUT_WORKFLOW_NAME}'"
+CLOUDOS_RUN_CMD+=" --workflow-name \"${INPUT_WORKFLOW_NAME}\""
 
 if [[ ${INPUT_JOB_CONFIG} ]];          then CLOUDOS_RUN_CMD+=" --job-config ${INPUT_JOB_CONFIG}" ; fi
 if [[ ${INPUT_NEXTFLOW_PROFILE} ]];    then CLOUDOS_RUN_CMD+=" --nextflow-profile ${INPUT_NEXTFLOW_PROFILE}" ; fi
