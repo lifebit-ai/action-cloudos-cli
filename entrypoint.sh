@@ -14,7 +14,7 @@ if [[ ${INPUT_NEXTFLOW_PROFILE} ]];    then CLOUDOS_RUN_CMD+=" --nextflow-profil
 if [[ ${INPUT_GIT_COMMIT} ]];          then CLOUDOS_RUN_CMD+=" --git-commit ${INPUT_GIT_COMMIT}" ; fi
 if [[ ${INPUT_GIT_TAG} ]];             then CLOUDOS_RUN_CMD+=" --git-tag ${INPUT_GIT_TAG}" ; fi
 if [[ ${INPUT_JOB_NAME} ]];            then CLOUDOS_RUN_CMD+=" --job-name ${INPUT_JOB_NAME}" ; fi
-if [[ ${INPUT_EXECUTION_PLATFORM} ]];        then CLOUDOS_RUN_CMD+=" --execution-platform ${EXECUTION_PLATFORM}" ; fi
+if [[ ${INPUT_EXECUTION_PLATFORM} ]];        then CLOUDOS_RUN_CMD+=" --execution-platform ${INPUT_EXECUTION_PLATFORM}" ; fi
 if [[ ${INPUT_INSTANCE_TYPE} ]];       then CLOUDOS_RUN_CMD+=" --instance-type ${INPUT_INSTANCE_TYPE}" ; fi
 if [[ ${INPUT_INSTANCE_DISK} ]];       then CLOUDOS_RUN_CMD+=" --instance-disk ${INPUT_INSTANCE_DISK}" ; fi
 if [[ ${INPUT_STORAGE_MODE} ]];        then CLOUDOS_RUN_CMD+=" --storage-mode ${INPUT_STORAGE_MODE}" ; fi
@@ -34,7 +34,7 @@ printf '%s\n' "${CLOUDOS_RUN_CMD//$INPUT_APIKEY/}"
 
 if [[ ${INPUT_DRY_RUN} != 'true' ]]
 then
-    stdout=$($CLOUDOS_RUN_CMD)
+    stdout=$(eval "$CLOUDOS_RUN_CMD")
 
     echo "Result: "
     echo $stdout
