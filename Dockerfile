@@ -1,5 +1,5 @@
 # Base image
-FROM quay.io/lifebitaiorg/cloudos-cli:v2.75.0
+FROM quay.io/lifebitaiorg/cloudos-cli:v2.89.2
 
 # installes required packages for our script
 RUN apt-get update && apt install -y \
